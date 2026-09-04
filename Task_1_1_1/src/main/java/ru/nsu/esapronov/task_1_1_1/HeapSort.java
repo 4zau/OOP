@@ -1,4 +1,4 @@
-package ru.nsu.esapronov;
+package ru.nsu.esapronov.task_1_1_1;
 
 public class HeapSort {
     public static void sort(int[] array) {
