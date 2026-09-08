@@ -1,4 +1,4 @@
-package ru.nsu.esapronov.task_111;
+package ru.nsu.esapronov.task111;
 
 /**
  * Класс способный применять heapsort к массиву.

@@ -1,4 +1,4 @@
-package ru.nsu.esapronov.task_111;
+package ru.nsu.esapronov.task111;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
