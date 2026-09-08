@@ -1,10 +1,13 @@
 package ru.nsu.esapronov.task_1_1_1;
 
+/**
+ * Класс способный применять heapsort к массиву.
+ */
 public class HeapSort {
     /**
-     * Сортирует массив пирамидальной сортировкой
+     * Сортирует массив пирамидальной сортировкой.
      *
-     * @param array массив который будет отсортирован
+     * @param array массив который будет отсортирован.
      */
     public static void sort(int[] array) {
         if (array == null || array.length <= 1) {
@@ -27,10 +30,11 @@ public class HeapSort {
     }
 
     /**
-     * Преобразует массив в кучу
-     * @param array сам массив
-     * @param n размер кучи
-     * @param i индекс корня
+     * Преобразует массив в кучу.
+     *
+     * @param array сам массив.
+     * @param n размер кучи.
+     * @param i индекс корня.
      */
     private static void heapify(int[] array, int n, int i) {
         int largest = i;

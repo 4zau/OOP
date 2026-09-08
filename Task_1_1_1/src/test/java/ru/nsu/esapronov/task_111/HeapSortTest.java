@@ -2,7 +2,8 @@ package ru.nsu.esapronov.task_1_1_1;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 class HeapSortTest {
     @Test
@@ -32,6 +33,7 @@ class HeapSortTest {
         HeapSort.sort(array);
         assertArrayEquals(new int[]{-12332, 0, 4, 5, 54}, array);
     }
+
     @Test
     void testArrayWithDuplicates() {
         int[] array = {3, 1, 2, 3, 1, 3};
