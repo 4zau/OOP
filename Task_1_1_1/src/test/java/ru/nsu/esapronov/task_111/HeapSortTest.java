@@ -1,9 +1,9 @@
-package ru.nsu.esapronov.task_1_1_1;
-
-import org.junit.jupiter.api.Test;
+package ru.nsu.esapronov.task_111;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+
+import org.junit.jupiter.api.Test;
 
 class HeapSortTest {
     @Test
