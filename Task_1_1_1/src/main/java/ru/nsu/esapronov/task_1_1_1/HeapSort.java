@@ -1,6 +1,11 @@
 package ru.nsu.esapronov.task_1_1_1;
 
 public class HeapSort {
+    /**
+     * Сортирует массив пирамидальной сортировкой
+     *
+     * @param array массив который будет отсортирован
+     */
     public static void sort(int[] array) {
         if (array == null || array.length <= 1) {
             return;
@@ -21,6 +26,12 @@ public class HeapSort {
         }
     }
 
+    /**
+     * Преобразует массив в кучу
+     * @param array сам массив
+     * @param n размер кучи
+     * @param i индекс корня
+     */
     private static void heapify(int[] array, int n, int i) {
         int largest = i;
         int left = 2 * i + 1;
