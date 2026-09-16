@@ -2,6 +2,7 @@ package ru.nsu.esapronov.task112;
 
 import java.util.Scanner;
 
+/// Класс отвечающий за проведение игры.
 public class BlackjackGame {
     private final Deck deck;
     private final Player player;
@@ -11,26 +12,33 @@ public class BlackjackGame {
     private int round = 1;
     private final Scanner scanner;
 
-    public BlackjackGame() {
-        this.deck = new Deck(4);
+    /// Инициализирует всё необходимое.
+    /// @param scanner Откуда читается ввод
+    public BlackjackGame(Scanner scanner) {
+        this.deck = new Deck(1);
         this.player = new Player();
         this.dealer = new Dealer();
-        this.scanner = new Scanner(System.in);
+        this.scanner = scanner;
     }
 
+    /// Запускает раунды.
     public void start() {
         System.out.println("Добро пожаловать в Блэкджек!");
         while (true) {
             playRound();
+
             System.out.println("\nНажмите Enter для начала следующего раунда, или введите 'q' для выхода.");
+
             String input = scanner.nextLine();
             if ("q".equalsIgnoreCase(input.trim())) {
                 break;
             }
+
             round++;
         }
     }
 
+    /// Проводит раунд.
     private void playRound() {
         System.out.println("\nРаунд " + round);
         player.clearHand();
@@ -61,6 +69,7 @@ public class BlackjackGame {
         }
 
         System.out.println("\nВаш ход\n-------");
+
         boolean playerBusted = false;
         while (true) {
             System.out.println("Введите “1”, чтобы взять карту, и “0”, чтобы остановиться.");
@@ -70,8 +79,7 @@ public class BlackjackGame {
                 Card drawn = deck.draw();
                 player.addCard(drawn);
 
-                int cardVal = drawn.getValue();
-                System.out.printf("Вы открыли карту %s (%d)\n", drawn.getName(), cardVal);
+                System.out.printf("Вы открыли карту %s (%d)\n", drawn.getName(), drawn.getValue());
                 printTable(true);
 
                 if (player.isBusted()) {
@@ -79,7 +87,7 @@ public class BlackjackGame {
                     dealerWins++;
                     playerBusted = true;
                     break;
-                } else if (player.getScore() == 21) {
+                } else if (player.hasBlackjack()) {
                     System.out.println("Вы набрали 21!");
                     break;
                 }
@@ -94,6 +102,7 @@ public class BlackjackGame {
         }
 
         System.out.println("\nХод дилера\n-------");
+
         Card hidden = dealer.getHand().getCard(1);
         System.out.printf("Дилер открывает закрытую карту %s (%d)\n",
                 hidden.getName(), hidden.getValue());
@@ -128,6 +137,8 @@ public class BlackjackGame {
         printScore();
     }
 
+    /// Выводит карты участнов.
+    /// @param hideDealerCard Прятать вторую карту дилера.
     private void printTable(boolean hideDealerCard) {
         System.out.printf("Ваши карты: %s > %d\n",
                 player.getHand().getCardsDisplay(false), player.getScore());
@@ -140,6 +151,7 @@ public class BlackjackGame {
         }
     }
 
+    /// Выводит счёт участников.
     private void printScore() {
         if (playerWins > dealerWins) {
             System.out.printf("Счет %d:%d в вашу пользу.\n", playerWins, dealerWins);

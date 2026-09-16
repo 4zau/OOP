@@ -3,16 +3,19 @@ package ru.nsu.esapronov.task112;
 import java.util.ArrayList;
 import java.util.List;
 
+/// Класс отвечающий за руку играющего.
 public class Hand {
     private final List<Card> cards = new ArrayList<>();
 
+    /// Добавляет карту в колоду.
+    /// @param card Карта которая будет добавлена
     public void addCard(Card card) {
         cards.add(card);
     }
 
+    /// Возвращает текущее значение руки.
     public int getScore() {
-        int score = 0;
-        int aces = 0;
+        int score = 0, aces = 0;
 
         for (Card c : cards) {
             if (c.getRank() == Rank.ACE) {
@@ -31,8 +34,11 @@ public class Hand {
         return total;
     }
 
+    /// Выводит строку содержащую карты в колоде.
+    /// @param hideSecond Если да, то прячем вторую карту
     public String getCardsDisplay(boolean hideSecond) {
         int score = 0, aces = 0;
+
         for (Card c : cards) {
             if (c.getRank() == Rank.ACE) {
                 aces++;
@@ -59,7 +65,7 @@ public class Hand {
                 return sb.toString();
             }
 
-            Card c = cards.get(i);
+            Card c = getCard(i);
             if (c.getRank() == Rank.ACE) {
                 if (countedAces11 < acesAs11) {
                     sb.append(c.getName()).append(" (11)");
@@ -79,15 +85,23 @@ public class Hand {
         return sb.toString();
     }
 
+    /// Возвращает карту по индексу.
+    /// @param index Собственно сам индекс.
     public Card getCard(int index) {
         return cards.get(index);
     }
+
+    /// Очищает руку.
     public void clear() {
         cards.clear();
     }
+
+    /// Блэкджек!.
     public boolean isBlackjack() {
-        return cards.size() == 2 && getScore() == 21;
+        return getScore() == 21;
     }
+
+    /// Не блекджек...
     public boolean isBust() {
         return getScore() > 21;
     }
