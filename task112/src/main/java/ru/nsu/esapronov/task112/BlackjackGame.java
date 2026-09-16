@@ -70,7 +70,7 @@ public class BlackjackGame {
 
         System.out.println("\nВаш ход\n-------");
 
-        boolean playerBusted = false;
+        boolean playerBusted = false, playerBlackjack = false;
         while (true) {
             System.out.println("Введите “1”, чтобы взять карту, и “0”, чтобы остановиться.");
             String choice = scanner.nextLine().trim();
@@ -89,6 +89,7 @@ public class BlackjackGame {
                     break;
                 } else if (player.hasBlackjack()) {
                     System.out.println("Вы набрали 21!");
+                    playerBlackjack = true;
                     break;
                 }
             } else if ("0".equals(choice)) {
@@ -101,19 +102,21 @@ public class BlackjackGame {
             return;
         }
 
-        System.out.println("\nХод дилера\n-------");
+        if (!playerBlackjack) {
+            System.out.println("\nХод дилера\n-------");
 
-        Card hidden = dealer.getHand().getCard(1);
-        System.out.printf("Дилер открывает закрытую карту %s (%d)\n",
-                hidden.getName(), hidden.getValue());
-        printTable(false);
-
-        while (dealer.getScore() < 17) {
-            Card drawn = deck.draw();
-            dealer.addCard(drawn);
-            System.out.printf("Дилер открывает карту %s (%d)\n",
-                    drawn.getName(), drawn.getValue());
+            Card hidden = dealer.getHand().getCard(1);
+            System.out.printf("Дилер открывает закрытую карту %s (%d)\n",
+                    hidden.getName(), hidden.getValue());
             printTable(false);
+
+            while (dealer.getScore() < 17) {
+                Card drawn = deck.draw();
+                dealer.addCard(drawn);
+                System.out.printf("Дилер открывает карту %s (%d)\n",
+                        drawn.getName(), drawn.getValue());
+                printTable(false);
+            }
         }
 
         if (dealer.isBusted()) {
