@@ -46,19 +46,3 @@ public abstract class Participant {
         return name;
     }
 }
-
-/// Класс игрока
-class Player extends Participant {
-    /// Создает участника с именем Игрок.
-    public Player() {
-        super("Игрок");
-    }
-}
-
-/// Класс дилера.
-class Dealer extends Participant {
-    /// Создает участника с именем Дилер.
-    public Dealer() {
-        super("Дилер");
-    }
-}

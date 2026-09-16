@@ -34,6 +34,6 @@ public class Deck {
         if (cards.isEmpty()) {
             initialize();
         }
-        return cards.removeLast();
+        return cards.remove(cards.size() - 1);
     }
 }
