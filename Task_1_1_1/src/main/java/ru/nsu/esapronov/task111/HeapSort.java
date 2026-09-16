@@ -1,5 +1,7 @@
 package ru.nsu.esapronov.task111;
 
+import java.util.Arrays;
+
 /**
  * Класс способный применять heapsort к массиву.
  */
@@ -56,5 +58,30 @@ public class HeapSort {
 
             heapify(array, n, largest);
         }
+    }
+
+    public static void test(int size) {
+        int[] array = new int[size];
+        for (int i = 0; i < size; i++) {
+            array[i] = i;
+        }
+
+        long startTime = System.nanoTime();
+        HeapSort.sort(array);
+        long endTime = System.nanoTime();
+
+        System.out.println(endTime - startTime);
+
+        System.out.println(size * (Math.log(size) / Math.log(2)));
+    }
+
+    public static void main(String[] args) {
+        test(10_000);
+
+        test(1_000_000);
+
+        test(5_000_000);
+
+        test(10_000_000);
     }
 }
