@@ -64,6 +64,6 @@ public class HandTest {
         hand.addCard(new Card(Rank.TEN, Suit.DIAMONDS));
 
         String display = hand.getCardsDisplay(true);
-        assertEquals("[Туз Трефы (11), <закрытая карта ]", display);
+        assertEquals("[Туз Трефы (11), <закрытая карта> ]", display);
     }
 }
