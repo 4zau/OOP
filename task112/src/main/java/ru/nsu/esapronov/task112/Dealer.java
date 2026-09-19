@@ -6,4 +6,9 @@ class Dealer extends Participant {
     public Dealer() {
         super("Дилер");
     }
+
+    /// Определяет, нужно ли дилеру брать еще карту (останавливается на 17).
+    public boolean shouldHit() {
+        return getScore() < 17;
+    }
 }

@@ -6,56 +6,44 @@ import java.util.List;
 /// Класс отвечающий за руку играющего.
 public class Hand {
     private final List<Card> cards = new ArrayList<>();
+    private int score;
+    private int acesAs11;
 
     /// Добавляет карту в колоду.
     /// @param card Карта которая будет добавлена
     public void addCard(Card card) {
         cards.add(card);
-    }
 
-    /// Возвращает текущее значение руки.
-    public int getScore() {
-        int score = 0, aces = 0;
+        int total = 0, aces = 0;
 
         for (Card c : cards) {
             if (c.getRank() == Rank.ACE) {
                 aces++;
             } else {
-                score += c.getValue();
+                total += c.getValue();
             }
         }
 
-        int total = score + aces * 11;
+        total += aces * 11;
 
-        while (total > 21 && aces > 0) {
-            total -= 10;
-            aces--;
-        }
-        return total;
-    }
-
-    /// Выводит строку содержащую карты в колоде.
-    /// @param hideSecond Если да, то прячем вторую карту
-    public String getCardsDisplay(boolean hideSecond) {
-        int score = 0, aces = 0;
-
-        for (Card c : cards) {
-            if (c.getRank() == Rank.ACE) {
-                aces++;
-            } else {
-                score += c.getValue();
-            }
-        }
-
-        int total = score + aces * 11;
-
-        int acesAs11 = aces;
+        acesAs11 = aces;
 
         while (total > 21 && acesAs11 > 0) {
             total -= 10;
             acesAs11--;
         }
 
+        score = total;
+    }
+
+    /// Возвращает текущее значение руки.
+    public int getScore() {
+        return score;
+    }
+
+    /// Выводит строку содержащую карты в колоде.
+    /// @param hideSecond Если да, то прячем вторую карту
+    public String getCardsDisplay(boolean hideSecond) {
         StringBuilder sb = new StringBuilder("[");
         int countedAces11 = 0;
 
@@ -94,6 +82,8 @@ public class Hand {
     /// Очищает руку.
     public void clear() {
         cards.clear();
+        score = 0;
+        acesAs11 = 0;
     }
 
     /// Блэкджек!.
