@@ -145,10 +145,8 @@ public class BlackjackGame {
 
             if (winner == ScoreBoard.Winner.PLAYER) {
                 ui.printMessage("Вы выиграли раунд!");
-                scoreBoard.playerWon();
             } else if (winner == ScoreBoard.Winner.DEALER) {
                 ui.printMessage("Дилер выиграл раунд.");
-                scoreBoard.dealerWon();
             } else {
                 ui.printMessage("Ничья!");
             }
