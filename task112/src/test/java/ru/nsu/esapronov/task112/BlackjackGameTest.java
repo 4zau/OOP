@@ -2,7 +2,6 @@ package ru.nsu.esapronov.task112;
 
 import org.junit.jupiter.api.Test;
 import java.util.Scanner;
-
 import static org.mockito.Mockito.*;
 
 class BlackjackGameTest {
