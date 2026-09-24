@@ -1,6 +1,8 @@
 package ru.nsu.esapronov.task112;
 
-/// Обозначает ранг карты.
+/**
+ * Обозначает ранг карты.
+ */
 public enum Rank {
     TWO("Двойка", 2), THREE("Тройка", 3), FOUR("Четверка", 4),
     FIVE("Пятерка", 5), SIX("Шестерка", 6), SEVEN("Семерка", 7),
@@ -11,19 +13,27 @@ public enum Rank {
     private final String name;
     private final int value;
 
-    /// @param name Название
-    /// @param value Значение
+    /**
+     * Создаёт ранг карты.
+     *
+     * @param name Название
+     * @param value Значение
+     */
     Rank(String name, int value) {
         this.name = name;
         this.value = value;
     }
 
-    /// Возвращает имя.
+    /**
+     * Возвращает имя.
+     */
     public String getName() {
         return name;
     }
 
-    /// Возвращает значение.
+    /**
+     * Возвращает значение.
+     */
     public int getValue() {
         return value;
     }

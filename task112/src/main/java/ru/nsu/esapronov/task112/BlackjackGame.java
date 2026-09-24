@@ -2,26 +2,33 @@ package ru.nsu.esapronov.task112;
 
 import java.util.Scanner;
 
-/// Класс отвечающий за проведение игры.
+/**
+ * Класс отвечающий за проведение игры.
+ */
 public class BlackjackGame {
     private final Deck deck;
     private final Player player;
     private final Dealer dealer;
     private final ScoreBoard scoreBoard;
-    private final GameUI ui;
+    private final GameUi ui;
     private int round = 1;
 
-    /// Инициализирует всё необходимое.
-    /// @param scanner Откуда читается ввод
+    /**
+     * Инициализирует всё необходимое.
+     *
+     * @param scanner Откуда читается ввод
+     */
     public BlackjackGame(Scanner scanner) {
         this.deck = new Deck(1);
         this.player = new Player();
         this.dealer = new Dealer();
         this.scoreBoard = new ScoreBoard();
-        this.ui = new GameUI(scanner);
+        this.ui = new GameUi(scanner);
     }
 
-    /// Запускает раунды.
+    /**
+     * Запускает раунды.
+     */
     public void start() {
         ui.printMessage("Добро пожаловать в Блэкджек!");
         while (true) {
@@ -36,7 +43,9 @@ public class BlackjackGame {
         }
     }
 
-    /// Проводит раунд.
+    /**
+     * Проводит раунд.
+     */
     private void playRound() {
         ui.printRoundStart(round);
         dealInitialCards();
@@ -57,7 +66,9 @@ public class BlackjackGame {
         determineWinner();
     }
 
-    /// Раздает начальные карты.
+    /**
+     * Раздает начальные карты.
+     */
     private void dealInitialCards() {
         player.clearHand();
         dealer.clearHand();
@@ -68,15 +79,17 @@ public class BlackjackGame {
         dealer.addCard(deck.draw());
     }
 
-    /// Проверяет наличие блэкджека сразу после раздачи.
+    /**
+     * Проверяет наличие блэкджека сразу после раздачи.
+     */
     private boolean checkInitialBlackjack() {
-        boolean pBj = player.hasBlackjack();
-        boolean dBj = dealer.hasBlackjack();
+        boolean playerBlackjack = player.hasBlackjack();
+        boolean dealerBlackjack = dealer.hasBlackjack();
 
-        if (pBj || dBj) {
-            if (pBj && dBj) {
+        if (playerBlackjack || dealerBlackjack) {
+            if (playerBlackjack && dealerBlackjack) {
                 ui.printMessage("У обоих блэкджек! Ничья.");
-            } else if (pBj) {
+            } else if (playerBlackjack) {
                 ui.printMessage("Блэкджек! Вы выиграли раунд!");
                 scoreBoard.playerWon();
             } else {
@@ -91,7 +104,9 @@ public class BlackjackGame {
         return false;
     }
 
-    /// Ход игрока.
+    /**
+     * Ход игрока.
+     */
     private boolean playerTurn() {
         ui.printMessage("\nВаш ход\n-------");
         while (true) {
@@ -119,7 +134,9 @@ public class BlackjackGame {
         }
     }
 
-    /// Ход дилера.
+    /**
+     * Ход дилера.
+     */
     private void dealerTurn() {
         ui.printMessage("\nХод дилера\n-------");
 
@@ -135,13 +152,16 @@ public class BlackjackGame {
         }
     }
 
-    /// Определение победителя в конце раунда.
+    /**
+     * Определение победителя в конце раунда.
+     */
     private void determineWinner() {
         if (dealer.isBusted()) {
             ui.printMessage("У дилера перебор! Вы выиграли раунд!");
             scoreBoard.playerWon();
         } else {
-            ScoreBoard.Winner winner = scoreBoard.compareScores(player.getScore(), dealer.getScore());
+            ScoreBoard.Winner winner = scoreBoard.compareScores(
+                    player.getScore(), dealer.getScore());
 
             if (winner == ScoreBoard.Winner.PLAYER) {
                 ui.printMessage("Вы выиграли раунд!");

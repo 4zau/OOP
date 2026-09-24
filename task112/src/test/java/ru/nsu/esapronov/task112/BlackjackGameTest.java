@@ -1,8 +1,11 @@
 package ru.nsu.esapronov.task112;
 
-import org.junit.jupiter.api.Test;
+import static org.mockito.Mockito.mockConstruction;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
 import java.util.Scanner;
-import static org.mockito.Mockito.*;
+import org.junit.jupiter.api.Test;
 
 class BlackjackGameTest {
 
@@ -13,12 +16,12 @@ class BlackjackGameTest {
     @Test
     void testPlayerBlackjack() {
         try (var deckMock = mockConstruction(Deck.class);
-             var uiMock = mockConstruction(GameUI.class)) {
+             var uiMock = mockConstruction(GameUi.class)) {
 
-            BlackjackGame game = new BlackjackGame(new Scanner("q\n"));
+            final BlackjackGame game = new BlackjackGame(new Scanner("q\n"));
 
             Deck deck = deckMock.constructed().get(0);
-            GameUI ui = uiMock.constructed().get(0);
+            GameUi ui = uiMock.constructed().get(0);
 
             when(deck.draw()).thenReturn(
                     card(Rank.ACE),
@@ -38,13 +41,13 @@ class BlackjackGameTest {
     @Test
     void testDealerBlackjack() {
         try (var deckMock = mockConstruction(Deck.class);
-             var uiMock = mockConstruction(GameUI.class)) {
+             var uiMock = mockConstruction(GameUi.class)) {
 
-            BlackjackGame game = new BlackjackGame(
+            final BlackjackGame game = new BlackjackGame(
                     new Scanner("q\n"));
 
             Deck deck = deckMock.constructed().get(0);
-            GameUI ui = uiMock.constructed().get(0);
+            GameUi ui = uiMock.constructed().get(0);
 
             when(deck.draw()).thenReturn(
                     card(Rank.TEN),
@@ -65,13 +68,13 @@ class BlackjackGameTest {
     @Test
     void testBothHaveBlackjack() {
         try (var deckMock = mockConstruction(Deck.class);
-             var uiMock = mockConstruction(GameUI.class)) {
+             var uiMock = mockConstruction(GameUi.class)) {
 
-            BlackjackGame game = new BlackjackGame(
+            final BlackjackGame game = new BlackjackGame(
                     new Scanner("q\n"));
 
             Deck deck = deckMock.constructed().get(0);
-            GameUI ui = uiMock.constructed().get(0);
+            GameUi ui = uiMock.constructed().get(0);
 
             when(deck.draw()).thenReturn(
                     card(Rank.ACE),
@@ -91,13 +94,13 @@ class BlackjackGameTest {
     @Test
     void testPlayerBusts() {
         try (var deckMock = mockConstruction(Deck.class);
-             var uiMock = mockConstruction(GameUI.class)) {
+             var uiMock = mockConstruction(GameUi.class)) {
 
-            BlackjackGame game = new BlackjackGame(
+            final BlackjackGame game = new BlackjackGame(
                     new Scanner("1\nq\n"));
 
             Deck deck = deckMock.constructed().get(0);
-            GameUI ui = uiMock.constructed().get(0);
+            GameUi ui = uiMock.constructed().get(0);
 
             when(deck.draw()).thenReturn(
                     card(Rank.TEN),
@@ -119,13 +122,13 @@ class BlackjackGameTest {
     @Test
     void testDealerBusts() {
         try (var deckMock = mockConstruction(Deck.class);
-             var uiMock = mockConstruction(GameUI.class)) {
+             var uiMock = mockConstruction(GameUi.class)) {
 
-            BlackjackGame game = new BlackjackGame(
+            final BlackjackGame game = new BlackjackGame(
                     new Scanner("0\nq\n"));
 
             Deck deck = deckMock.constructed().get(0);
-            GameUI ui = uiMock.constructed().get(0);
+            GameUi ui = uiMock.constructed().get(0);
 
             when(deck.draw()).thenReturn(
                     card(Rank.TEN),
@@ -147,13 +150,13 @@ class BlackjackGameTest {
     @Test
     void testPlayerChoosesStandAndDealerWins() {
         try (var deckMock = mockConstruction(Deck.class);
-             var uiMock = mockConstruction(GameUI.class)) {
+             var uiMock = mockConstruction(GameUi.class)) {
 
-            BlackjackGame game = new BlackjackGame(
+            final BlackjackGame game = new BlackjackGame(
                     new Scanner("0\nq\n"));
 
             Deck deck = deckMock.constructed().get(0);
-            GameUI ui = uiMock.constructed().get(0);
+            GameUi ui = uiMock.constructed().get(0);
 
             when(deck.draw()).thenReturn(
                     card(Rank.TEN),
@@ -174,13 +177,13 @@ class BlackjackGameTest {
     @Test
     void testPlayerWinsAfterDealerTurn() {
         try (var deckMock = mockConstruction(Deck.class);
-             var uiMock = mockConstruction(GameUI.class)) {
+             var uiMock = mockConstruction(GameUi.class)) {
 
-            BlackjackGame game = new BlackjackGame(
+            final BlackjackGame game = new BlackjackGame(
                     new Scanner("0\nq\n"));
 
             Deck deck = deckMock.constructed().get(0);
-            GameUI ui = uiMock.constructed().get(0);
+            GameUi ui = uiMock.constructed().get(0);
 
             when(deck.draw()).thenReturn(
                     card(Rank.TEN),
@@ -201,13 +204,13 @@ class BlackjackGameTest {
     @Test
     void testDraw() {
         try (var deckMock = mockConstruction(Deck.class);
-             var uiMock = mockConstruction(GameUI.class)) {
+             var uiMock = mockConstruction(GameUi.class)) {
 
-            BlackjackGame game = new BlackjackGame(
+            final BlackjackGame game = new BlackjackGame(
                     new Scanner("0\nq\n"));
 
             Deck deck = deckMock.constructed().get(0);
-            GameUI ui = uiMock.constructed().get(0);
+            GameUi ui = uiMock.constructed().get(0);
 
             when(deck.draw()).thenReturn(
                     card(Rank.TEN),
