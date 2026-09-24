@@ -76,6 +76,7 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">ScoreBoard</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
+<div class="block">Класс для ведения счета игры.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -90,7 +91,9 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color"><code>static enum&nbsp;</code></div>
 <div class="col-second even-row-color"><code><a href="ScoreBoard.Winner.html" class="type-name-link" title="enum class in ru.nsu.esapronov.task112">ScoreBoard.Winner</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Возможный результат сравнения очков.</div>
+</div>
 </div>
 </section>
 </li>
@@ -121,7 +124,9 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="ScoreBoard.Winner.html" title="enum class in ru.nsu.esapronov.task112">ScoreBoard.Winner</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#compareScores(int,int)" class="member-name-link">compareScores</a><wbr>(int&nbsp;playerScore,
  int&nbsp;dealerScore)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Сравнивает очки участников и обновляет счёт победителя.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#dealerWon()" class="member-name-link">dealerWon</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
@@ -194,6 +199,14 @@ loadScripts(document, 'script');</script>
 <h3>compareScores</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="ScoreBoard.Winner.html" title="enum class in ru.nsu.esapronov.task112">ScoreBoard.Winner</a></span>&nbsp;<span class="element-name">compareScores</span><wbr><span class="parameters">(int&nbsp;playerScore,
  int&nbsp;dealerScore)</span></div>
+<div class="block">Сравнивает очки участников и обновляет счёт победителя.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>playerScore</code> - очки игрока</dd>
+<dd><code>dealerScore</code> - очки дилера</dd>
+<dt>Returns:</dt>
+<dd>победитель или ничья</dd>
+</dl>
 </section>
 </li>
 </ul>
