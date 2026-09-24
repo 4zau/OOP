@@ -4,19 +4,26 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-/// Колода из которой тянутся карты.
+/**
+ * Колода из которой тянутся карты.
+ */
 public class Deck {
     private final List<Card> cards = new ArrayList<>();
     private final int numDecks;
 
-    /// Создаёт колоду.
-    /// @param numDecks Сколько колод использовать
+    /**
+     * Создаёт колоду.
+     *
+     * @param numDecks Сколько колод использовать
+     */
     public Deck(int numDecks) {
         this.numDecks = numDecks;
         initialize();
     }
 
-    /// Тусуем карты.
+    /**
+     * Тусуем карты.
+     */
     private void initialize() {
         cards.clear();
         for (int i = 0; i < numDecks; i++) {
@@ -29,7 +36,9 @@ public class Deck {
         Collections.shuffle(cards);
     }
 
-    /// Тянем карту.
+    /**
+     * Тянем карту.
+     */
     public Card draw() {
         if (cards.isEmpty()) {
             initialize();

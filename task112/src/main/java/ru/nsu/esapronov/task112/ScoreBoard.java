@@ -1,10 +1,13 @@
 package ru.nsu.esapronov.task112;
 
-/// Класс для ведения счета игры.
+/**
+ * Класс для ведения счета игры.
+ */
 public class ScoreBoard {
     private int playerWins = 0;
     private int dealerWins = 0;
 
+    /** Возможный результат сравнения очков. */
     public enum Winner {
         PLAYER,
         DEALER,
@@ -27,6 +30,13 @@ public class ScoreBoard {
         return dealerWins;
     }
 
+    /**
+     * Сравнивает очки участников и обновляет счёт победителя.
+     *
+     * @param playerScore очки игрока
+     * @param dealerScore очки дилера
+     * @return победитель или ничья
+     */
     public Winner compareScores(int playerScore, int dealerScore) {
         if (playerScore > dealerScore) {
             this.playerWon();

@@ -1,47 +1,68 @@
 package ru.nsu.esapronov.task112;
 
-/// Участник игры.
+/**
+ * Участник игры.
+ */
 public abstract class Participant {
     protected final Hand hand = new Hand();
     protected final String name;
 
-    /// @param name Как звать.
+    /**
+     * Создаёт участника игры.
+     *
+     * @param name Как звать.
+     */
     public Participant(String name) {
         this.name = name;
     }
 
-    /// Добавляем карту к игроку.
-    /// @param card Карта которая будет добавлена.
+    /**
+     * Добавляем карту к игроку.
+     *
+     * @param card Карта которая будет добавлена.
+     */
     public void addCard(Card card) {
         hand.addCard(card);
     }
 
-    /// Возвращает руку.
+    /**
+     * Возвращает руку.
+     */
     public Hand getHand() {
         return hand;
     }
 
-    /// Возвращает текущие очки.
+    /**
+     * Возвращает текущие очки.
+     */
     public int getScore() {
         return hand.getScore();
     }
 
-    /// Очищает руку.
+    /**
+     * Очищает руку.
+     */
     public void clearHand() {
         hand.clear();
     }
 
-    /// Проверяет проиграл ли.
+    /**
+     * Проверяет проиграл ли.
+     */
     public boolean isBusted() {
         return hand.isBust();
     }
 
-    /// Проверяет на блэкджэк.
+    /**
+     * Проверяет на блэкджэк.
+     */
     public boolean hasBlackjack() {
         return hand.isBlackjack();
     }
 
-    /// Возвращает имя.
+    /**
+     * Возвращает имя.
+     */
     public String getName() {
         return name;
     }

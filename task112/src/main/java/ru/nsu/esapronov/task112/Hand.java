@@ -3,18 +3,24 @@ package ru.nsu.esapronov.task112;
 import java.util.ArrayList;
 import java.util.List;
 
-/// Класс отвечающий за руку играющего.
+/**
+ * Класс отвечающий за руку играющего.
+ */
 public class Hand {
     private final List<Card> cards = new ArrayList<>();
     private int score;
     private int acesAs11;
 
-    /// Добавляет карту в колоду.
-    /// @param card Карта которая будет добавлена
+    /**
+     * Добавляет карту в колоду.
+     *
+     * @param card Карта которая будет добавлена
+     */
     public void addCard(Card card) {
         cards.add(card);
 
-        int total = 0, aces = 0;
+        int total = 0;
+        int aces = 0;
 
         for (Card c : cards) {
             if (c.getRank() == Rank.ACE) {
@@ -36,13 +42,18 @@ public class Hand {
         score = total;
     }
 
-    /// Возвращает текущее значение руки.
+    /**
+     * Возвращает текущее значение руки.
+     */
     public int getScore() {
         return score;
     }
 
-    /// Выводит строку содержащую карты в колоде.
-    /// @param hideSecond Если да, то прячем вторую карту
+    /**
+     * Выводит строку содержащую карты в колоде.
+     *
+     * @param hideSecond Если да, то прячем вторую карту
+     */
     public String getCardsDisplay(boolean hideSecond) {
         StringBuilder sb = new StringBuilder("[");
         int countedAces11 = 0;
@@ -73,25 +84,34 @@ public class Hand {
         return sb.toString();
     }
 
-    /// Возвращает карту по индексу.
-    /// @param index Собственно сам индекс.
+    /**
+     * Возвращает карту по индексу.
+     *
+     * @param index Собственно сам индекс.
+     */
     public Card getCard(int index) {
         return cards.get(index);
     }
 
-    /// Очищает руку.
+    /**
+     * Очищает руку.
+     */
     public void clear() {
         cards.clear();
         score = 0;
         acesAs11 = 0;
     }
 
-    /// Блэкджек!.
+    /**
+     * Блэкджек!.
+     */
     public boolean isBlackjack() {
         return getScore() == 21;
     }
 
-    /// Не блекджек...
+    /**
+     * Не блекджек...
+     */
     public boolean isBust() {
         return getScore() > 21;
     }
