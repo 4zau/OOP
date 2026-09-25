@@ -3,7 +3,7 @@ package ru.nsu.esapronov.task112;
 /**
  * Класс дилера.
  */
-class Dealer extends Participant {
+public class Dealer extends Participant {
     /**
      * Создает участника с именем Дилер.
      */
