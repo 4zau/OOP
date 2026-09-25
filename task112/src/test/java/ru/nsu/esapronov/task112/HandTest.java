@@ -7,6 +7,9 @@ import org.junit.jupiter.api.Test;
 
 public class HandTest {
 
+    /**
+     * Тест.
+     */
     @Test
     public void testHandScoreWithoutAces() {
         Hand hand = new Hand();
@@ -15,6 +18,9 @@ public class HandTest {
         assertEquals(17, hand.getScore());
     }
 
+    /**
+     * Тест.
+     */
     @Test
     public void testHandScoreWithAceAsEleven() {
         Hand hand = new Hand();
@@ -22,7 +28,9 @@ public class HandTest {
         hand.addCard(new Card(Rank.SEVEN, Suit.HEARTS));
         assertEquals(18, hand.getScore());
     }
-
+    /**
+     * Тест.
+     */
     @Test
     public void testHandScoreWithAceAsOne() {
         Hand hand = new Hand();
@@ -31,7 +39,9 @@ public class HandTest {
         hand.addCard(new Card(Rank.EIGHT, Suit.DIAMONDS));
         assertEquals(19, hand.getScore());
     }
-
+    /**
+     * Тест.
+     */
     @Test
     public void testMultipleAces() {
         Hand hand = new Hand();
@@ -48,7 +58,9 @@ public class HandTest {
         hand.addCard(new Card(Rank.KING, Suit.HEARTS));
         assertTrue(hand.isBlackjack());
     }
-
+    /**
+     * Тест.
+     */
     @Test
     public void testGetCardsDisplayOpen() {
         Hand hand = new Hand();
@@ -58,7 +70,9 @@ public class HandTest {
         String display = hand.getCardsDisplay(false);
         assertEquals("[Дама Пики (10), Тройка Червы (3)]", display);
     }
-
+    /**
+     * Тест.
+     */
     @Test
     public void testGetCardsDisplayHidden() {
         Hand hand = new Hand();

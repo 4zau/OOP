@@ -1,7 +1,7 @@
 package ru.nsu.esapronov.task112;
 
 /**
- * Класс игрока
+ * Класс игрока.
  */
 public class Player extends Participant {
     /**

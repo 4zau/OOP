@@ -1,8 +1,7 @@
 package ru.nsu.esapronov.task112;
 
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Test;
 
 class ScoreBoardTest {
     @Test

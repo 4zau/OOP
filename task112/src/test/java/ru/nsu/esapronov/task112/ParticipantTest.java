@@ -7,6 +7,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 
 public class ParticipantTest {
+    /**
+    * Тест.
+     */
     @Test
     public void testPlayerInitialization() {
         Player player = new Player();
@@ -14,6 +17,9 @@ public class ParticipantTest {
         assertEquals(0, player.getScore());
     }
 
+    /**
+     * Тест.
+     */
     @Test
     public void testParticipantBust() {
         Dealer dealer = new Dealer();
@@ -25,6 +31,9 @@ public class ParticipantTest {
         assertEquals(25, dealer.getScore());
     }
 
+    /**
+     * Тест.
+     */
     @Test
     public void testClearHand() {
         Player player = new Player();

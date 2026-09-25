@@ -1,8 +1,8 @@
 package ru.nsu.esapronov.task112;
 
-import org.junit.jupiter.api.Test;
-import java.util.Scanner;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import java.util.Scanner;
+import org.junit.jupiter.api.Test;
 
 class GameUiTest {
     @Test

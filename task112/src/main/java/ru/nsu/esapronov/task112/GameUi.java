@@ -62,26 +62,47 @@ public class GameUi {
         }
     }
 
+    /**
+     * Спрашивает выбор игрога про карту и возвращает.
+     */
     public String askPlayerChoice() {
         System.out.println("Введите “1”, чтобы взять карту, и “0”, чтобы остановиться.");
         return scanner.nextLine().trim();
     }
 
+    /**
+     * Спрашивает выбор игрога про след раунд и возвращает.
+     */
     public String askNextRound() {
         System.out.println("\nНажмите Enter для начала следующего раунда, "
                 + "или введите 'q' для выхода.");
         return scanner.nextLine().trim();
     }
 
+    /**
+     * Пишет что игрок открыл карту.
+     *
+     * @param drawn карта
+     */
     public void printPlayerDrewCard(Card drawn) {
         System.out.printf("Вы открыли карту %s (%d)\n", drawn.getName(), drawn.getValue());
     }
 
+    /**
+     * Пишет что дилер открыл закрытую карту.
+     *
+     * @param hidden карта
+     */
     public void printDealerRevealsCard(Card hidden) {
         System.out.printf("Дилер открывает закрытую карту %s (%d)\n",
                 hidden.getName(), hidden.getValue());
     }
 
+    /**
+     * Пишет что дилер открыт карту.
+     *
+     * @param drawn карта
+     */
     public void printDealerDrewCard(Card drawn) {
         System.out.printf("Дилер открывает карту %s (%d)\n",
                 drawn.getName(), drawn.getValue());
