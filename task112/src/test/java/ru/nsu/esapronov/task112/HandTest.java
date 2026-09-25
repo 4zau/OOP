@@ -5,6 +5,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
+/**
+ * Тест.
+ */
 public class HandTest {
 
     /**
@@ -28,6 +31,7 @@ public class HandTest {
         hand.addCard(new Card(Rank.SEVEN, Suit.HEARTS));
         assertEquals(18, hand.getScore());
     }
+
     /**
      * Тест.
      */
@@ -39,6 +43,7 @@ public class HandTest {
         hand.addCard(new Card(Rank.EIGHT, Suit.DIAMONDS));
         assertEquals(19, hand.getScore());
     }
+
     /**
      * Тест.
      */
@@ -51,6 +56,9 @@ public class HandTest {
         assertEquals(13, hand.getScore());
     }
 
+    /**
+     * Тест.
+     */
     @Test
     public void testBlackjack() {
         Hand hand = new Hand();
@@ -58,6 +66,7 @@ public class HandTest {
         hand.addCard(new Card(Rank.KING, Suit.HEARTS));
         assertTrue(hand.isBlackjack());
     }
+
     /**
      * Тест.
      */
@@ -70,6 +79,7 @@ public class HandTest {
         String display = hand.getCardsDisplay(false);
         assertEquals("[Дама Пики (10), Тройка Червы (3)]", display);
     }
+
     /**
      * Тест.
      */
