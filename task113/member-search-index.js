@@ -1,0 +1,1 @@
+memberSearchIndex = [{"p":"ru.nsu.esapronov.task113","c":"Main","l":"Main()","u":"%3Cinit%3E()"},{"p":"ru.nsu.esapronov.task113","c":"Main","l":"main(String[])","u":"main(java.lang.String[])"}];updateSearchResults();
