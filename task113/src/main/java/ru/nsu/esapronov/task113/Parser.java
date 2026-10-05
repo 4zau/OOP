@@ -41,7 +41,7 @@ final class Parser {
         skipSpaces();
 
         if (take('(')) {
-            Expression left = expression();
+            final Expression left = expression();
             skipSpaces();
             if (position >= text.length()) {
                 throw error("expected an operator");
