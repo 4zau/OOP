@@ -14,7 +14,9 @@ final class Mul extends BinaryExpression {
         super(left, right);
     }
 
-    @Override protected char operator() { return '*'; }
+    @Override protected char operator() {
+        return '*';
+    }
 
     /** Строит производную по правилу произведения: u' * v + u * v'. */
     @Override public Expression derivative(String variable) {

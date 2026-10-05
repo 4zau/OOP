@@ -14,7 +14,9 @@ final class Div extends BinaryExpression {
         super(left, right);
     }
 
-    @Override protected char operator() { return '/'; }
+    @Override protected char operator() {
+        return '/';
+    }
 
     /** Строит производную по правилу частного: (u' * v - u * v') / (v * v). */
     @Override public Expression derivative(String variable) {

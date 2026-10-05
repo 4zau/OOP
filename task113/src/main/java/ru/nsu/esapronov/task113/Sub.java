@@ -14,7 +14,9 @@ final class Sub extends BinaryExpression {
         super(left, right);
     }
 
-    @Override protected char operator() { return '-'; }
+    @Override protected char operator() {
+        return '-';
+    }
 
     @Override public Expression derivative(String variable) {
         return new Sub(left.derivative(variable), right.derivative(variable));
