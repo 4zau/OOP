@@ -14,7 +14,7 @@ final class Add extends BinaryExpression {
         super(left, right);
     }
 
-    @Override protected char operator() {
+    protected char operator() {
         return '+';
     }
 
