@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
+/** Топологическая сортировка рекурсивным обходом в глубину. */
 public final class DfsTopologicalSort implements TopologicalSort {
     private enum Color { GRAY, BLACK }
 

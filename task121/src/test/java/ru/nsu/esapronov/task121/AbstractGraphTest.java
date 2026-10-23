@@ -26,7 +26,7 @@ class AbstractGraphTest {
             for (Representation second : Representation.values()) {
                 Graph<String> a = sample(first, false);
                 Graph<String> b = sample(second, true);
-                Graph<String> c = sample(Representation.INCIDENCE_MATRIX, false);
+                final Graph<String> c = sample(Representation.INCIDENCE_MATRIX, false);
                 assertEquals(a, a);
                 assertEquals(a, b);
                 assertEquals(b, a);
@@ -43,7 +43,7 @@ class AbstractGraphTest {
     @Test
     void equalityIncludesIsolatedVerticesAndEdgeDirection() {
         Graph<String> a = sample(Representation.ADJACENCY_LIST, false);
-        Graph<String> b = sample(Representation.ADJACENCY_MATRIX, false);
+        final Graph<String> b = sample(Representation.ADJACENCY_MATRIX, false);
         assertNotEquals(null, a);
         assertFalse(a.equals(null));
         assertFalse(a.equals("not a graph"));

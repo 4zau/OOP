@@ -33,6 +33,7 @@ public interface Graph<V> {
     /** Исходящие соседи. Для неизвестной вершины IllegalArgumentException. */
     List<V> neighbors(V vertex);
 
+    /** Возвращает множество всех направленных рёбер графа. */
     default Set<Edge<V>> edges() {
         Set<Edge<V>> result = new LinkedHashSet<>();
         for (V from : vertices()) {
@@ -46,7 +47,7 @@ public interface Graph<V> {
     /** Создаёт новый граф выбранного представления. */
     static Graph<String> readFromFile(Path path, Representation representation)
             throws IOException {
-        return GraphIO.read(path, representation);
+        return GraphIo.read(path, representation);
     }
 
     /**
@@ -62,6 +63,6 @@ public interface Graph<V> {
     static <V> Graph<V> readFromFile(Path path, Representation representation,
                                      Function<String, V> vertexParser)
             throws IOException {
-        return GraphIO.read(path, representation, vertexParser);
+        return GraphIo.read(path, representation, vertexParser);
     }
 }

@@ -70,7 +70,7 @@ abstract class TopologicalSortTest {
         graph.addEdge(3, 4);
         graph.addEdge(5, 6);
         List<Integer> before = graph.vertices();
-        Set<Edge<Integer>> edgesBefore = graph.edges();
+        final Set<Edge<Integer>> edgesBefore = graph.edges();
         TopologicalSort sorter = createSorter();
         List<Integer> order = sorter.sort(graph);
         assertValidOrder(graph, order);

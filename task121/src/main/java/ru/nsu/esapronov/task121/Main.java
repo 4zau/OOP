@@ -3,7 +3,13 @@ package ru.nsu.esapronov.task121;
 import java.io.IOException;
 import java.nio.file.Path;
 
+/** Пример чтения графа и запуска топологической сортировки. */
 public final class Main {
+    /**
+     * Читает граф из файла и выводит результаты двух сортировок.
+     *
+     * @param args один аргумент: путь к файлу графа
+     */
     public static void main(String[] args) {
         if (args.length != 1) {
             System.err.println("please input filename");
