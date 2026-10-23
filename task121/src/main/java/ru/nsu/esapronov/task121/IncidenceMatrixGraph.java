@@ -6,10 +6,13 @@ import java.util.Objects;
 
 /**
  * Строки - вершины, столбцы - рёбра.
- * -1 начало, +1 конец.
- * Для петли используется 2.
+ * Значения ячеек EDGE_START, EDGE_END и SELF_LOOP.
  */
 public final class IncidenceMatrixGraph<V> extends AbstractGraph<V> {
+    private static final int EDGE_START = -1;
+    private static final int EDGE_END = 1;
+    private static final int SELF_LOOP = 2;
+
     private final List<V> vertices = new ArrayList<>();
     private int[][] matrix = new int[0][0];
     private int edgeCount;
@@ -39,8 +42,8 @@ public final class IncidenceMatrixGraph<V> extends AbstractGraph<V> {
     /** Поиск столбца ребра по индексам его концов. */
     private int column(int from, int to) {
         for (int e = 0; e < edgeCount; e++) {
-            if (from == to ? matrix[from][e] == 2
-                    : matrix[from][e] == -1 && matrix[to][e] == 1) {
+            if (from == to ? matrix[from][e] == SELF_LOOP
+                    : matrix[from][e] == EDGE_START && matrix[to][e] == EDGE_END) {
                 return e;
             }
         }
@@ -101,10 +104,10 @@ public final class IncidenceMatrixGraph<V> extends AbstractGraph<V> {
         }
 
         if (i == j) {
-            next[i][edgeCount] = 2;
+            next[i][edgeCount] = SELF_LOOP;
         } else {
-            next[i][edgeCount] = -1;
-            next[j][edgeCount] = 1;
+            next[i][edgeCount] = EDGE_START;
+            next[j][edgeCount] = EDGE_END;
         }
 
         matrix = next;
@@ -144,11 +147,11 @@ public final class IncidenceMatrixGraph<V> extends AbstractGraph<V> {
 
         List<V> result = new ArrayList<>();
         for (int e = 0; e < edgeCount; e++) {
-            if (matrix[row][e] == 2) {
+            if (matrix[row][e] == SELF_LOOP) {
                 result.add(vertex);
-            } else if (matrix[row][e] == -1) {
+            } else if (matrix[row][e] == EDGE_START) {
                 for (int v = 0; v < vertices.size(); v++) {
-                    if (matrix[v][e] == 1) {
+                    if (matrix[v][e] == EDGE_END) {
                         result.add(vertices.get(v));
                         break;
                     }
@@ -159,3 +162,4 @@ public final class IncidenceMatrixGraph<V> extends AbstractGraph<V> {
         return snapshot(result);
     }
 }
+

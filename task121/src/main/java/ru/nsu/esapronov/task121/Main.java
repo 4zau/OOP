@@ -10,8 +10,8 @@ public final class Main {
             System.exit(1);
         }
         try {
-            Graph<String> graph = Graph.readFromFile(
-                    Path.of(args[0]), Representation.ADJACENCY_LIST);
+            Graph<Integer> graph = Graph.readFromFile(
+                    Path.of(args[0]), Representation.ADJACENCY_LIST, Integer::parseInt);
             System.out.println(graph);
             System.out.println("Kahn: " + new KahnTopologicalSort().sort(graph));
             System.out.println("DFS:  " + new DfsTopologicalSort().sort(graph));

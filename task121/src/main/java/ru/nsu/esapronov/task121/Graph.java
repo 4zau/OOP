@@ -5,6 +5,7 @@ import java.nio.file.Path;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.function.Function;
 
 /**
  * Ориентированный невзвешенный граф без кратных рёбер.
@@ -46,5 +47,21 @@ public interface Graph<V> {
     static Graph<String> readFromFile(Path path, Representation representation)
             throws IOException {
         return GraphIO.read(path, representation);
+    }
+
+    /**
+     * Создаёт граф с вершинами заданного типа.
+     *
+     * @param path путь к файлу
+     * @param representation способ хранения графа
+     * @param vertexParser преобразование имени вершины в значение
+     * @param <V> тип вершин
+     * @return прочитанный граф
+     * @throws IOException при ошибке чтения, формата или преобразования вершины
+     */
+    static <V> Graph<V> readFromFile(Path path, Representation representation,
+                                     Function<String, V> vertexParser)
+            throws IOException {
+        return GraphIO.read(path, representation, vertexParser);
     }
 }

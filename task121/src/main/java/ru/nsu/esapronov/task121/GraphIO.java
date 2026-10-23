@@ -5,6 +5,10 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
+import java.util.function.Function;
 
 /**
  * Формат: N M, затем N строк с именами вершин, затем M строк "from to".
@@ -12,7 +16,26 @@ import java.nio.file.Path;
 public final class GraphIO {
     public static Graph<String> read(Path path, Representation representation)
             throws IOException {
-        Graph<String> graph = representation.create();
+        return read(path, representation, Function.identity());
+    }
+
+    /**
+     * Читает граф, преобразуя объявленные имена вершин в значения типа V.
+     *
+     * @param path путь к файлу
+     * @param representation способ хранения графа
+     * @param vertexParser преобразование имени вершины в значение
+     * @param <V> тип вершин
+     * @return прочитанный граф
+     * @throws IOException при ошибке чтения, формата или преобразования вершины
+     */
+    public static <V> Graph<V> read(Path path, Representation representation,
+                                    Function<String, V> vertexParser)
+            throws IOException {
+        Objects.requireNonNull(representation, "representation");
+        Objects.requireNonNull(vertexParser, "vertexParser");
+        Graph<V> graph = representation.create();
+        Map<String, V> verticesByName = new HashMap<>();
 
         try (BufferedReader reader = Files.newBufferedReader(path, StandardCharsets.UTF_8)) {
             String[] header = fields(reader, 1, 2);
@@ -21,17 +44,32 @@ public final class GraphIO {
 
             for (int i = 0; i < n; i++) {
                 String name = fields(reader,  i + 2, 1)[0];
-                if (!graph.addVertex(name)) {
-                    throw new IOException("Duplicate vertex: " + name);
+                if (verticesByName.containsKey(name)) {
+                    throw new IOException("duplicate vertex: " + name);
                 }
+
+                V vertex;
+                try {
+                    vertex = Objects.requireNonNull(vertexParser.apply(name), "vertex");
+                } catch (RuntimeException exception) {
+                    throw new IOException("Cannot parse vertex: " + name, exception);
+                }
+
+                if (!graph.addVertex(vertex)) {
+                    throw new IOException("Duplicate vertex after conversion: " + name);
+                }
+                verticesByName.put(name, vertex);
             }
 
             for (int i = 0; i < m; i++) {
                 String[] edge = fields(reader, n + i + 2, 2);
-                if (!graph.containsVertex(edge[0]) || !graph.containsVertex(edge[1])) {
+                if (!verticesByName.containsKey(edge[0])
+                        || !verticesByName.containsKey(edge[1])) {
                     throw new IOException("Unknown endpoint: " + String.join(" ", edge));
                 }
-                if (!graph.addEdge(edge[0], edge[1])) {
+                V from = verticesByName.get(edge[0]);
+                V to = verticesByName.get(edge[1]);
+                if (!graph.addEdge(from, to)) {
                     throw new IOException("Duplicate edge: " + String.join(" ", edge));
                 }
             }
