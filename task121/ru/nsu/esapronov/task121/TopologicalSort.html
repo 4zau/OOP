@@ -76,6 +76,7 @@ loadScripts(document, 'script');</script>
 </dl>
 <hr>
 <div class="type-signature"><span class="modifiers">public interface </span><span class="element-name type-name-label">TopologicalSort</span></div>
+<div class="block">Алгоритм топологической сортировки вершин графа.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -93,7 +94,7 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>&lt;V&gt;&nbsp;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;V&gt;</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#sort(ru.nsu.esapronov.task121.Graph)" class="member-name-link">sort</a><wbr>(<a href="Graph.html" title="interface in ru.nsu.esapronov.task121">Graph</a>&lt;V&gt;&nbsp;graph)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
-<div class="block">IllegalArgumentException при цикле</div>
+<div class="block">Возвращает топологический порядок вершин.</div>
 </div>
 </div>
 </div>
@@ -113,7 +114,17 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="sort(ru.nsu.esapronov.task121.Graph)">
 <h3>sort</h3>
 <div class="member-signature"><span class="type-parameters">&lt;V&gt;</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;V&gt;</span>&nbsp;<span class="element-name">sort</span><wbr><span class="parameters">(<a href="Graph.html" title="interface in ru.nsu.esapronov.task121">Graph</a>&lt;V&gt;&nbsp;graph)</span></div>
-<div class="block">IllegalArgumentException при цикле</div>
+<div class="block">Возвращает топологический порядок вершин.</div>
+<dl class="notes">
+<dt>Type Parameters:</dt>
+<dd><code>V</code> - тип вершин</dd>
+<dt>Parameters:</dt>
+<dd><code>graph</code> - сортируемый граф</dd>
+<dt>Returns:</dt>
+<dd>список вершин в топологическом порядке</dd>
+<dt>Throws:</dt>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/IllegalArgumentException.html" title="class or interface in java.lang" class="external-link">IllegalArgumentException</a></code> - если граф содержит цикл</dd>
+</dl>
 </section>
 </li>
 </ul>
