@@ -19,7 +19,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-class GraphIOTest {
+class GraphIoTest {
     @TempDir
     Path directory;
 
@@ -34,7 +34,7 @@ class GraphIOTest {
     void readsStringsAndPreservesIsolatedVertices(Representation representation)
             throws IOException {
         Path path = file("3 1\nА\nБ\nотдельная\nА Б\n");
-        Graph<String> graph = GraphIO.read(path, representation);
+        Graph<String> graph = GraphIo.read(path, representation);
         assertEquals(List.of("А", "Б", "отдельная"), graph.vertices());
         assertEquals(Set.of(new Edge<>("А", "Б")), graph.edges());
         assertTrue(graph.neighbors("отдельная").isEmpty());
@@ -43,7 +43,7 @@ class GraphIOTest {
     @ParameterizedTest
     @EnumSource(Representation.class)
     void readsIntegersThroughParser(Representation representation) throws IOException {
-        Graph<Integer> graph = GraphIO.read(
+        Graph<Integer> graph = GraphIo.read(
                 file("3 2\n10\n20\n30\n10 20\n20 20\n"),
                 representation, Integer::parseInt);
         assertEquals(List.of(10, 20, 30), graph.vertices());
@@ -64,7 +64,7 @@ class GraphIOTest {
     @Test
     void parserRunsOncePerDeclaredVertexAndEndpointsReuseObjects() throws IOException {
         AtomicInteger calls = new AtomicInteger();
-        Graph<Object> graph = GraphIO.read(
+        Graph<Object> graph = GraphIo.read(
                 file("2 2\nA\nB\nA B\nB A\n"),
                 Representation.ADJACENCY_LIST, name -> {
                     calls.incrementAndGet();
@@ -80,7 +80,8 @@ class GraphIOTest {
     @Test
     void readsCustomVertexType() throws IOException {
         record Vertex(String name) { }
-        Graph<Vertex> graph = GraphIO.read(
+
+        Graph<Vertex> graph = GraphIo.read(
                 file("2 1\nA\nB\nA B\n"),
                 Representation.ADJACENCY_MATRIX, Vertex::new);
         assertTrue(graph.containsEdge(new Vertex("A"), new Vertex("B")));
@@ -88,44 +89,37 @@ class GraphIOTest {
 
     @Test
     void acceptsWhitespaceAndEmptyGraph() throws IOException {
-        Graph<String> graph = GraphIO.read(
+        Graph<String> graph = GraphIo.read(
                 file("  2\t1  \n A \n B \n A\tB \n\n  \n"),
                 Representation.ADJACENCY_LIST);
         assertTrue(graph.containsEdge("A", "B"));
-        assertTrue(GraphIO.read(file("0 0\n"), Representation.ADJACENCY_LIST)
+        assertTrue(GraphIo.read(file("0 0\n"), Representation.ADJACENCY_LIST)
                 .vertices().isEmpty());
-        assertTrue(GraphIO.read(file("0 0"), Representation.INCIDENCE_MATRIX)
+        assertTrue(GraphIo.read(file("0 0"), Representation.INCIDENCE_MATRIX)
                 .edges().isEmpty());
     }
 
     @ParameterizedTest
     @ValueSource(strings = {
-            "",
-            "   ",
-            "2",
-            "1 0 extra\n",
-            "x 0\n",
-            "0 x\n",
-            "-1 0\n",
-            "0 -1\n",
-            "2147483648 0\n",
-            "1 0\n",
-            "1 0\n \n",
-            "1 0\nA B\n",
-            "2 0\nA\nA\n",
-            "1 1\nA\n",
-            "1 1\nA\n\n",
-            "1 1\nA\nA\n",
-            "1 1\nA\nA A extra\n",
-            "1 1\nA\nunknown A\n",
-            "1 1\nA\nA unknown\n",
-            "1 2\nA\nA A\nA A\n",
-            "0 0\nextra\n"
+        "",
+        "   ",
+        "2",
+        "1 0 extra\n",
+        "x 0\n",
+        "0 x\n",
+        "-1 0\n",
+        "0 -1\n",
+        "2147483648 0\n",
+        "1 1\nA\nA A extra\n",
+        "1 1\nA\nunknown A\n",
+        "1 1\nA\nA unknown\n",
+        "1 2\nA\nA A\nA A\n",
+        "0 0\nextra\n"
     })
     void rejectsMalformedFiles(String text) throws IOException {
         Path path = file(text);
         for (Representation representation : Representation.values()) {
-            assertThrows(IOException.class, () -> GraphIO.read(path, representation));
+            assertThrows(IOException.class, () -> GraphIo.read(path, representation));
         }
     }
 
@@ -134,7 +128,7 @@ class GraphIOTest {
         Path path = file("2 0\n1\n01\n");
         for (Representation representation : Representation.values()) {
             assertThrows(IOException.class,
-                    () -> GraphIO.read(path, representation, Integer::parseInt));
+                    () -> GraphIo.read(path, representation, Integer::parseInt));
         }
     }
 
@@ -142,7 +136,7 @@ class GraphIOTest {
     void parsingFailureRetainsItsCause() throws IOException {
         Path path = file("1 0\nnot-a-number\n");
         IOException exception = assertThrows(IOException.class,
-                () -> GraphIO.read(path, Representation.ADJACENCY_LIST, Integer::parseInt));
+                () -> GraphIo.read(path, Representation.ADJACENCY_LIST, Integer::parseInt));
         assertInstanceOf(NumberFormatException.class, exception.getCause());
         assertTrue(exception.getMessage().contains("not-a-number"));
     }
@@ -151,7 +145,7 @@ class GraphIOTest {
     void rejectsParserReturningNull() throws IOException {
         Path path = file("1 0\nA\n");
         IOException exception = assertThrows(IOException.class,
-                () -> GraphIO.read(path, Representation.ADJACENCY_LIST, name -> null));
+                () -> GraphIo.read(path, Representation.ADJACENCY_LIST, name -> null));
         assertInstanceOf(NullPointerException.class, exception.getCause());
     }
 
@@ -159,18 +153,18 @@ class GraphIOTest {
     void endpointMustUseDeclaredName() throws IOException {
         Path path = file("1 1\n1\n1 01\n");
         assertThrows(IOException.class,
-                () -> GraphIO.read(path, Representation.ADJACENCY_LIST, Integer::parseInt));
+                () -> GraphIo.read(path, Representation.ADJACENCY_LIST, Integer::parseInt));
     }
 
     @Test
     void rejectsMissingFileAndNullArguments() throws IOException {
-        assertThrows(IOException.class, () -> GraphIO.read(
+        assertThrows(IOException.class, () -> GraphIo.read(
                 directory.resolve("missing.txt"), Representation.ADJACENCY_LIST));
         Path path = file("0 0\n");
-        assertThrows(NullPointerException.class, () -> GraphIO.read(path, null));
+        assertThrows(NullPointerException.class, () -> GraphIo.read(path, null));
         assertThrows(NullPointerException.class,
-                () -> GraphIO.read(path, Representation.ADJACENCY_LIST, null));
+                () -> GraphIo.read(path, Representation.ADJACENCY_LIST, null));
         assertThrows(NullPointerException.class,
-                () -> GraphIO.read(null, Representation.ADJACENCY_LIST));
+                () -> GraphIo.read(null, Representation.ADJACENCY_LIST));
     }
 }
