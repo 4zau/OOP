@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ru.nsu.esapronov.task113.ParserTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2026-10-05T12:41:58.716Z" hostname="4zau-modern14c7m" time="0.127">
+  <properties/>
+  <testcase name="parserReadsSpacesAndNestedExpressions()" classname="ru.nsu.esapronov.task113.ParserTest" time="0.069"/>
+  <testcase name="parserReadsAllOperations()" classname="ru.nsu.esapronov.task113.ParserTest" time="0.01"/>
+  <testcase name="parserRejectsNullInput()" classname="ru.nsu.esapronov.task113.ParserTest" time="0.005"/>
+  <testcase name="parserReadsNegativeNumbersAndVariableNames()" classname="ru.nsu.esapronov.task113.ParserTest" time="0.002"/>
+  <testcase name="parserRejectsInvalidExpressions()" classname="ru.nsu.esapronov.task113.ParserTest" time="0.005"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
