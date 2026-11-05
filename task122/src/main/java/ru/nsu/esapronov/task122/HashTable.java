@@ -1,10 +1,15 @@
 package ru.nsu.esapronov.task122;
 
-import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.Objects;
 
+/**
+ * Хеш-таблица с цепочками для разрешения коллизий.
+ *
+ * @param <K> тип ключа
+ * @param <V> тип значения
+ */
 public class HashTable<K, V> implements Iterable<Entry<K, V>> {
     private static final int MIN_CAPACITY = 16;
     private static final int MAX_CAPACITY = 1 << 30;
@@ -12,7 +17,9 @@ public class HashTable<K, V> implements Iterable<Entry<K, V>> {
     private int size;
     private int modCount;
 
-    public HashTable() { buckets = createArray(MIN_CAPACITY); }
+    public HashTable() {
+        buckets = createArray(MIN_CAPACITY);
+    }
 
     @SuppressWarnings("unchecked")
     private static <K, V> Node<K, V>[] createArray(int capacity) {
@@ -28,14 +35,21 @@ public class HashTable<K, V> implements Iterable<Entry<K, V>> {
     private Node<K, V> findNode(Object key) {
         Node<K, V> node = buckets[index(key, buckets.length)];
         while (node != null) {
-            if (Objects.equals(node.key, key)) { return node; }
+            if (Objects.equals(node.key, key)) {
+                return node;
+            }
             node = node.next;
         }
         return null;
     }
 
-    public int size() { return size; }
-    public boolean isEmpty() { return size == 0; }
+    public int size() {
+        return size;
+    }
+
+    public boolean isEmpty() {
+        return size == 0;
+    }
 
     /** Добавляет пару или заменяет значение существующего ключа. */
     public void put(K key, V value) {
@@ -60,7 +74,7 @@ public class HashTable<K, V> implements Iterable<Entry<K, V>> {
         return node == null ? null : node.value;
     }
 
-    /** Обновляет существующий ключ */
+    /** Обновляет существующий ключ. */
     public void update(K key, V value) {
         Node<K, V> node = findNode(key);
         if (node == null) {
@@ -69,7 +83,9 @@ public class HashTable<K, V> implements Iterable<Entry<K, V>> {
         node.value = value;
     }
 
-    public boolean containsKey(K key) { return findNode(key) != null; }
+    public boolean containsKey(K key) {
+        return findNode(key) != null;
+    }
 
     /** Удаляет пару по ключу; сообщает, была ли она найдена. */
     public boolean remove(K key) {
@@ -124,10 +140,16 @@ public class HashTable<K, V> implements Iterable<Entry<K, V>> {
 
     @Override
     public boolean equals(Object object) {
-        if (this == object) { return true; }
-        if (!(object instanceof HashTable<?, ?>)) { return false; }
+        if (this == object) {
+            return true;
+        }
+        if (!(object instanceof HashTable<?, ?>)) {
+            return false;
+        }
         HashTable<?, ?> other = (HashTable<?, ?>) object;
-        if (size != other.size) { return false; }
+        if (size != other.size) {
+            return false;
+        }
         for (Node<K, V> head : buckets) {
             for (Node<K, V> node = head; node != null; node = node.next) {
                 Node<?, ?> otherNode = other.findNode(node.key);
@@ -155,7 +177,9 @@ public class HashTable<K, V> implements Iterable<Entry<K, V>> {
         StringBuilder result = new StringBuilder("{");
         boolean first = true;
         for (Entry<K, V> entry : this) {
-            if (!first) { result.append(", "); }
+            if (!first) {
+                result.append(", ");
+            }
             result.append(entry);
             first = false;
         }

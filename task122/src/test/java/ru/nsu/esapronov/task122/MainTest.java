@@ -1,24 +1,23 @@
 package ru.nsu.esapronov.task122;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.io.IOException;
-import java.lang.management.ManagementFactory;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.io.TempDir;
 
 class MainTest {
     @Test
-    public void mainTest() {
-
+    void printsUpdatedValue() {
+        PrintStream original = System.out;
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        try (PrintStream capture = new PrintStream(output, true, StandardCharsets.UTF_8)) {
+            System.setOut(capture);
+            Main.main(new String[0]);
+        } finally {
+            System.setOut(original);
+        }
+        assertEquals("1.0" + System.lineSeparator(), output.toString(StandardCharsets.UTF_8));
     }
 }

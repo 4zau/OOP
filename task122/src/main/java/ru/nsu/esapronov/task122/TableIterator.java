@@ -5,6 +5,12 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.function.IntSupplier;
 
+/**
+ * Итератор по парам хеш-таблицы с проверкой структурных изменений.
+ *
+ * @param <K> тип ключа
+ * @param <V> тип значения
+ */
 public class TableIterator<K, V> implements Iterator<Entry<K, V>> {
     private final Node<K, V>[] buckets;
     private final int expectedModCount;
@@ -13,6 +19,13 @@ public class TableIterator<K, V> implements Iterator<Entry<K, V>> {
     private int bucketIndex;
     private Node<K, V> nextNode;
 
+    /**
+     * Создаёт итератор по текущим корзинам таблицы.
+     *
+     * @param buckets корзины таблицы
+     * @param expectedModCount число изменений при создании итератора
+     * @param currentModCount источник текущего числа изменений
+     */
     public TableIterator(Node<K, V>[] buckets,
                          int expectedModCount,
                          IntSupplier currentModCount) {
