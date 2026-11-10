@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="4b35cc0c-b64e-42d2-9313-8acf17f88c6b" name="Changes" comment="task122" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="PUSH_AUTO_UPDATE" value="true" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/.." value="task121" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="NextEditCompletionFeaturesState">
+    <decayedCancelled>
+      <entry key="MS100" value="1.0000076918854424" />
+      <entry key="MS500" value="1.3470652894633526" />
+      <entry key="S2" value="4.576244587127396" />
+      <entry key="S5" value="10.31636250992113" />
+      <entry key="S10" value="21.406121325848883" />
+      <entry key="S30" value="48.83745995222467" />
+      <entry key="S60" value="63.6165714351466" />
+      <entry key="M2" value="73.52280228890024" />
+      <entry key="M5" value="82.65023417545815" />
+      <entry key="M10" value="91.78829645919086" />
+      <entry key="M15" value="100.53752147908314" />
+      <entry key="M30" value="119.53827949734548" />
+      <entry key="H1" value="136.98830325144053" />
+      <entry key="H2" value="149.00859531286716" />
+      <entry key="H4" value="156.08877243650653" />
+      <entry key="D1" value="162.61956879425173" />
+      <entry key="W1" value="163.80122205477562" />
+    </decayedCancelled>
+    <decayedSelected>
+      <entry key="MS100" value="0.0020360659391428153" />
+      <entry key="MS500" value="0.2895732015486608" />
+      <entry key="S2" value="0.7335666720836618" />
+      <entry key="S5" value="0.8834375134371811" />
+      <entry key="S10" value="0.9399135670034672" />
+      <entry key="S30" value="0.9795560834822415" />
+      <entry key="S60" value="0.9897252565652973" />
+      <entry key="M2" value="0.9948500751525869" />
+      <entry key="M5" value="1.0014106733154498" />
+      <entry key="M10" value="1.0579094105506557" />
+      <entry key="M15" value="1.1507660108309512" />
+      <entry key="M30" value="1.3888270952615118" />
+      <entry key="H1" value="1.6236638385514297" />
+      <entry key="H2" value="1.7897468033422492" />
+      <entry key="H4" value="1.8886823842461773" />
+      <entry key="D1" value="1.9805236880875128" />
+      <entry key="W1" value="1.9971941790926242" />
+    </decayedSelected>
+    <decayedShown>
+      <entry key="MS100" value="0.002117419027777044" />
+      <entry key="MS500" value="0.7811233936880564" />
+      <entry key="S2" value="4.918973626259404" />
+      <entry key="S5" value="11.009824123048404" />
+      <entry key="S10" value="22.227413684227123" />
+      <entry key="S30" value="49.754767591748056" />
+      <entry key="S60" value="64.56852421261893" />
+      <entry key="M2" value="74.49650628346626" />
+      <entry key="M5" value="83.6423892070355" />
+      <entry key="M10" value="92.84097835394506" />
+      <entry key="M15" value="101.68433098322897" />
+      <entry key="M30" value="120.92459280775509" />
+      <entry key="H1" value="138.6104628315278" />
+      <entry key="H2" value="150.79750507554317" />
+      <entry key="H4" value="157.97701136778" />
+      <entry key="D1" value="164.60001474904004" />
+      <entry key="W1" value="165.7984050303818" />
+    </decayedShown>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2,
+  &quot;fromUser&quot;: false
+}</component>
+  <component name="ProjectId" id="3LOxJGelmPiKLGqnOgU7YbPP037" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Gradle.task122 [:ru.nsu.esapronov.task122.Main.main()].executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;task122&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.jshint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.jshint&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
+  }
+}</component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-30f59d01ecdd-2df11533d9fe-intellij.indexing.shared.core-IU-262.11879.100" />
+        <option value="bundled-js-predefined-d6986cc7102b-4abd2a77f808-JavaScript-IU-262.11879.100" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4b35cc0c-b64e-42d2-9313-8acf17f88c6b" name="Changes" comment="" />
+      <created>1793338846328</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1793338846328</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="task122" />
+    <option name="LAST_COMMIT_MESSAGE" value="task122" />
+  </component>
+</project>
