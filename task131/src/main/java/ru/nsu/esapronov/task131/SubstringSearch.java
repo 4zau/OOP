@@ -9,7 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.LongConsumer;
 
-/** Поиск подстроки в файле. */
+/**
+ * Потоковый поиск подстроки в UTF-8-файле.
+ */
 public final class SubstringSearch {
     /** Возвращает индексы начиная с нуля. */
     public static List<Long> find(String filename, String substring) throws IOException {
@@ -36,7 +38,6 @@ public final class SubstringSearch {
             while ((unit = reader.read()) != -1) {
                 int codePoint = unit;
                 if (Character.isHighSurrogate((char) unit)) {
-                    // Декодер UTF-8 выдаёт кодовую точку вне BMP как пару char.
                     codePoint = Character.toCodePoint((char) unit, (char) reader.read());
                 }
 
@@ -49,7 +50,6 @@ public final class SubstringSearch {
 
                 if (matched == pattern.length) {
                     onMatch.accept(index - pattern.length + 1);
-                    // Суффикс совпадения может начать следующее вхождение.
                     matched = prefix[matched - 1];
                 }
                 index++;

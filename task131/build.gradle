@@ -18,6 +18,8 @@ dependencies {
 
 test {
     useJUnitPlatform()
+    // Большой тест создаёт файл больше всей доступной Java-кучи.
+    maxHeapSize = '64m'
 }
 
 jacocoTestReport {

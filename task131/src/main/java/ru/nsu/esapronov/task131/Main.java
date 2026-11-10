@@ -7,6 +7,12 @@ import java.nio.file.Path;
 
 /** Пример поиска подстроки. */
 public class Main {
+    /**
+     * Запускает пример поиска подстроки во временном файле.
+     *
+     * @param args аргументы командной строки
+     * @throws IOException если произошла ошибка при работе с файлом
+     */
     public static void main(String[] args) throws IOException {
         Path file = Files.createTempFile("task131-", ".txt");
         try {
@@ -17,4 +23,3 @@ public class Main {
         }
     }
 }
-
