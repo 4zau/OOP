@@ -1,10 +1,16 @@
 plugins {
     id 'java'
+    id 'application'
     id 'jacoco'
 }
 
 group = 'ru.nsu.esapronov'
 version = '1.0-SNAPSHOT'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
+}
 
 repositories {
     mavenCentral()
@@ -18,8 +24,10 @@ dependencies {
 
 test {
     useJUnitPlatform()
-    // Большой тест создаёт файл больше всей доступной Java-кучи.
-    maxHeapSize = '64m'
+}
+
+application {
+    mainClass = 'ru.nsu.esapronov.task141.Main'
 }
 
 jacocoTestReport {
